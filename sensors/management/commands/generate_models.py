@@ -16,9 +16,11 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument('--path', type=str)
+        parser.add_argument('--app', type=str)
 
     def handle(self, *args, **kwargs):
         path = kwargs['path']
+        apps_name = kwargs['app']
 
         with open(path) as f:
             data = json.load(f)
@@ -93,8 +95,8 @@ class Command(BaseCommand):
 
                 with open("create_object.py", "a") as pyf:
                     pyf.write(textwrap.dedent("""\
-                        from test_app.models import {}
-                    """.format(key)))
+                        from {}.models import {}
+                    """.format(apps_name, key)))
 
             with open("create_object.py", "a") as pyf:
                 pyf.write(textwrap.dedent("""\
