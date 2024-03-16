@@ -23,7 +23,7 @@ class Command(BaseCommand):
         website = kwargs['url']
         date = kwargs['date']
 
-        base_url = website + "/" + date + "/"
+        base_url = website + "/" + date
         page = requests.get(base_url)
         soup = BeautifulSoup(page.content, "html.parser")
         sensor_type_queue = dict()
