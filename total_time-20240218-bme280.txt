@@ -1,2 +1,2 @@
-total: 2910875 objects                                                             
+total: 2910875 objects
 time: 12735.951523065567 
